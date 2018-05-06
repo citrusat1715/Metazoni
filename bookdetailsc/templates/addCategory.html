@@ -1,0 +1,161 @@
+{% include 'topnavigationbar.html' %}
+<!DOCTYPE html>
+
+<html>
+<head>
+<style>
+
+li {
+    
+    text-align: center;
+    
+    text-decoration: none;
+    display: inline-block;
+    color: black;
+}
+
+li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+</style>
+</head>
+<body>
+
+
+<h1>Welcome {{ request.user.first_name }}</h1>
+<form  method="POST" enctype="multipart/form-data" >{% csrf_token %}
+<table border=1 style="margin-left:20px">
+      <tr>
+        <th><label for="{{ form.name.id_for_label }}">Name<label></th>
+        <td>
+		{% if form.name.errors %}
+        <ul class="c">    
+         <li>{{ form.name.errors }}</li>            
+            </ul>
+			{% endif %} 
+            {{ form.name }}       
+          {% if form.name.help_text %}
+		          <ul class="d">    
+            <li class="d" >{{ form.book.help_text }}</li>
+			</ul>
+          {%endif%}
+		  
+        </td>
+      </tr>
+	  	  <tr>
+        <th><label for="{{ form.parent.id_for_label }}">Parent</label></th>
+        <td>
+		{% if form.parent.errors %}
+        <ul class="c">    
+         <li>{{ form.parent.errors }}</li>            
+            </ul>
+			{% endif %} 
+            {{ form.parent }}       
+          {% if form.parent.help_text %}
+		          <ul class="d">    
+            <li class="d" >{{ form.parent.help_text }}</li>
+			</ul>
+          {%endif%}
+		  
+        </td>
+      </tr>
+      <tr>
+        <th><label for="{{ form.slug.id_for_label }}">Slug:</label></th>
+        <td>
+		{% if form.slug.errors %}
+        <ul class="c">    
+         <li>{{ form.slug.errors }}</li>            
+            </ul>
+			{% endif %} 
+            {{ form.slug }}       
+          {% if form.slug.help_text %}
+		          <ul class="d">    
+            <li class="d" >{{ form.slug.help_text }}</li>
+			</ul>
+          {%endif%}
+		  
+        </td>
+      </tr>
+
+	  	 
+	  <tr>
+        <th><label for="{{ form.description.id_for_label }}">{{form.description.label}}</label></th>
+        <td>
+		  {% if form.description.errors %}
+        <ul class="c">    
+        <li>{{form.description.errors}}</li>
+            {% endif %}  
+            </ul>
+            {{ form.description}}       
+          {% if form.description.help_text %}
+            <ul class="d">    
+            <li class="d" >{{ form.description.help_text }}</li>
+			</ul>
+          {%endif%}
+        </td>
+      </tr>
+	  <tr>
+        <th><label for="{{ form.metaDescription.id_for_label }}">{{form.metaDescription.label}}</label></th>
+        <td>
+		  {% if form.metaDescription.errors %}
+        <ul class="c">    
+        <li>{{form.metaDescription.errors}}</li>
+            {% endif %}  
+            </ul>
+            {{ form.metaDescription}}       
+          {% if form.metaDescription.help_text %}
+            <ul class="d">    
+            <li class="d" >{{ form.metaDescription.help_text }}</li>
+			</ul>
+          {%endif%}
+        </td>
+      </tr>
+	  
+	  	  <tr>
+        <th><label for="{{ form.metaKeywords.id_for_label }}">{{form.metaKeywords.label}}</label></th>
+        <td>
+		  {% if form.metaKeywords.errors %}
+        <ul class="c">    
+        <li>{{form.metaKeywords.errors}}</li>
+            {% endif %}  
+            </ul>
+            {{ form.metaKeywords}}       
+          {% if form.metaKeywords.help_text %}
+            <ul class="d">    
+            <li class="d" >{{ form.metaKeywords.help_text }}</li>
+			</ul>
+          {%endif%}
+        </td>
+      </tr>
+	  	  <tr>
+        <th><label for="{{ form.thumbnailImage.id_for_label }}">{{form.thumbnailImage.label}}</label></th>
+        <td>
+		  {% if form.thumbnailImage.errors %}
+        <ul class="c">    
+        <li>{{form.thumbnailImage.errors}}</li>
+            {% endif %}  
+            </ul>
+            {{ form.thumbnailImage}}       
+          {% if form.thumbnailImage.help_text %}
+            <ul class="d">    
+            <li class="d" >{{ form.thumbnailImage.help_text }}</li>
+			</ul>
+          {%endif%}
+        </td>
+      </tr>
+	  
+	  
+  </table>
+<input type="submit" value="submit">
+</form>
+
+</body>
+</html>

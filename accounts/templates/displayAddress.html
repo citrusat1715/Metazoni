@@ -1,0 +1,25 @@
+
+{% for address in a %}
+<div class="box ">
+                    <h4 class="">Your address</h4>
+                                            <div class="sel-address-shipping">
+                    	<div class=""><div class="">{{address.firstName}} {{address.firstName}}</div>
+						<div class=""><i class="osh-font-address"></i> 
+						<span class="osh-field -address"><span class="osh-field -address1 ft-address1 word-wrap">{{address.shippingAddress1}}</span> 
+						<span class="osh-field -address2 ft-address2 word-wrap"></span> 
+						<span class="osh-field -city ft-city">    </span>
+						<span class="osh-field -region ft-region">Azad Kashmir</span></span></div>
+						<div class="osh-row -with-icon-left"><i class="osh-font-simple-phone"></i> <span class="osh-field -phones">
+						<span class="osh-field -phone ft-phone1">{{address.phone1}}</span> <span class="osh-field -additional-phone ft-phone2"></span></span></div></div>
+						<div class="osh-address -widget -pickupStation hidden"><div class="osh-row -name"></div>
+						<div class="osh-row -with-icon-left"><i class="osh-font-address"></i> <span class="osh-field -address1"></span></div></div>                        </div>    
+                        <a class="ui-link icon i-information mts mbm ft-edit-address-button sel-link-edit-shipping" href="{{address.get_edit_url}}">
+                            Edit Address                        </a>
+						<a class="ui-link icon i-information mts mbm ft-edit-address-button sel-link-edit-shipping" href="{{address.get_delete_url}}">
+                            Delete Address                        </a>
+                                    </div>
+						<a class="ui-link icon i-information mts mbm ft-edit-address-button sel-link-edit-shipping" href="{% url 'addAddress' %}">
+                            ADD Address                        </a>
+                                    </div>
+
+{% endfor %}

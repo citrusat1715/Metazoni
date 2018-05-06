@@ -1,0 +1,280 @@
+{% include 'topnavigationbar.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+}
+</style>
+</head>
+<body>
+
+
+<h1>Welcome {{ request.user.username }}</h1>
+<form  method="POST" enctype="multipart/form-data" >{% csrf_token %}
+<table border="1" style="margin-left:10px;">
+      <tr>
+        <th><label for="{{ form.name.id_for_label }}">Book Name:</label></th>
+        <td>
+		{% if form.name.errors %}
+        <ul class="c">    
+         <li>{{ form.name.errors }}</li>            
+            </ul>
+			{% endif %} 
+            {{ form.name}}       
+          {% if form.name.help_text %}
+		          <ul class="d">    
+            <li class="d" >{{ form.name.help_text }}</li>
+			</ul>
+          {%endif%}
+		  
+        </td>
+      </tr>
+      <tr>
+        <th><label for="{{ form.category.id_for_label }}">Category</label></th>
+        <td>
+		{% if form.category.errors %}
+        <ul class="c">    
+         <li>{{ form.category.errors }}</li>            
+            </ul>
+			{% endif %} 
+            {{ form.category}}       
+          {% if form.category.help_text %}
+		          <ul class="d">    
+            <li class="d" >{{ form.category.help_text }}</li>
+			</ul>
+          {%endif%}
+		  
+        </td>
+      </tr>	 	    
+      <tr>
+        <th><label for="{{ form.author.id_for_label }}">Author</label></th>
+        <td>
+		{% if form.author.errors %}
+        <ul class="c">    
+         <li>{{ form.author.errors }}</li>            
+            </ul>
+			{% endif %} 
+            {{ form.author}}       
+          {% if form.author.help_text %}
+		          <ul class="d">    
+            <li class="d" >{{ form.author.help_text }}</li>
+			</ul>
+          {%endif%}
+		  
+        </td>
+      </tr>
+      <tr>
+        <th><label for="{{ form.publisher.id_for_label }}">Publisher</label></th>
+        <td>
+		{% if form.publisher.errors %}
+        <ul class="c">    
+         <li>{{ form.publisher.errors }}</li>            
+            </ul>
+			{% endif %} 
+            {{ form.publisher}}       
+          {% if form.publisher.help_text %}
+		          <ul class="d">    
+            <li class="d" >{{ form.publisher.help_text }}</li>
+			</ul>
+          {%endif%}
+		  
+        </td>
+      </tr>
+      <tr>
+        <th><label for="{{ form.isbn.id_for_label }}">ISBN</label></th>
+        <td>
+		{% if form.isbn.errors %}
+        <ul class="c">    
+         <li>{{ form.isbn.errors }}</li>            
+            </ul>
+			{% endif %} 
+            {{ form.isbn}}       
+          {% if form.isbn.help_text %}
+		          <ul class="d">    
+            <li class="d" >{{ form.isbn.help_text }}</li>
+			</ul>
+          {%endif%}
+		  
+        </td>
+      </tr>	    	  		    	  	
+      <tr>
+        <th><label for="{{ form.slug.id_for_label }}">Slug</label></th>
+        <td>
+		{% if form.slug.errors %}
+        <ul class="c">    
+         <li>{{ form.slug.errors }}</li>            
+            </ul>
+			{% endif %} 
+            {{ form.slug}}       
+          {% if form.slug.help_text %}
+		          <ul class="d">    
+            <li class="d" >{{ form.slug.help_text }}</li>
+			</ul>
+          {%endif%}
+		  
+        </td>
+      </tr>	 
+      <tr>
+        <th><label for="{{ form.sku.id_for_label }}">SKU</label></th>
+        <td>
+		{% if form.sku.errors %}
+        <ul class="c">    
+         <li>{{ form.sku.errors }}</li>            
+            </ul>
+			{% endif %} 
+            {{ form.sku}}       
+          {% if form.sku.help_text %}
+		          <ul class="d">    
+            <li class="d" >{{ form.sku.help_text }}</li>
+			</ul>
+          {%endif%}
+		  
+        </td>
+      </tr>	 
+      <tr>
+        <th><label for="{{ form.language.id_for_label }}">Language</label></th>
+        <td>
+		{% if form.language.errors %}
+        <ul class="c">    
+         <li>{{ form.language.errors }}</li>            
+            </ul>
+			{% endif %} 
+            {{ form.language}}       
+          {% if form.language.help_text %}
+		          <ul class="d">    
+            <li class="d" >{{ form.language.help_text }}</li>
+			</ul>
+          {%endif%}
+		  
+        </td>
+      </tr>	 
+
+      
+      <tr>
+        <th><label for="{{ form.bookDescription.id_for_label }}">Book Description</label></th>
+        <td>
+		{% if form.bookDescription.errors %}
+        <ul class="c">    
+         <li>{{ form.bookDescription.errors }}</li>            
+            </ul>
+			{% endif %} 
+            {{ form.bookDescription}}       
+          {% if form.bookDescription.help_text %}
+		          <ul class="d">    
+            <li class="d" >{{ form.bookDescription.help_text }}</li>
+			</ul>
+          {%endif%}
+		  
+        </td>
+      </tr>	
+ <tr>
+        <th><label for="{{ form.metaDescription.id_for_label }}">Meta Description</label></th>
+        <td>
+		{% if form.metaDescription.errors %}
+        <ul class="c">    
+         <li>{{ form.metaDescription.errors }}</li>            
+            </ul>
+			{% endif %} 
+            {{ form.metaDescription}}       
+          {% if form.metaDescription.help_text %}
+		          <ul class="d">    
+            <li class="d" >{{ form.metaDescription.help_text }}</li>
+			</ul>
+          {%endif%}
+		  
+        </td>
+      </tr>	
+ <tr>
+        <th><label for="{{ form.inStock.id_for_label }}">In Stock</label></th>
+        <td>
+		{% if form.inStock.errors %}
+        <ul class="c">    
+         <li>{{ form.inStock.errors }}</li>            
+            </ul>
+			{% endif %} 
+            {{ form.inStock}}       
+          {% if form.inStock.help_text %}
+		          <ul class="d">    
+            <li class="d" >{{ form.inStock.help_text }}</li>
+			</ul>
+          {%endif%}
+		  
+        </td>
+      </tr>	
+	  <tr>
+        <th><label for="{{ form.metaKeywords.id_for_label }}">Meta Keywords</label></th>
+        <td>
+		{% if form.metaKeywords.errors %}
+        <ul class="c">    
+         <li>{{ form.metaKeywords.errors }}</li>            
+            </ul>
+			{% endif %} 
+            {{ form.metaKeywords}}       
+          {% if form.metaKeywords.help_text %}
+		          <ul class="d">    
+            <li class="d" >{{ form.metaKeywords.help_text }}</li>
+			</ul>
+          {%endif%}
+		  
+        </td>
+      </tr>		  	
+ <tr>
+        <th><label for="{{ form.thumbnailImage.id_for_label }}">ThumbnailImage</label></th>
+        <td>
+		{% if form.thumbnailImage.errors %}
+        <ul class="c">    
+         <li>{{ form.thumbnailImage.errors }}</li>            
+            </ul>
+			{% endif %} 
+            {{ form.thumbnailImage}}       
+          {% if form.thumbnailImage.help_text %}
+		          <ul class="d">    
+            <li class="d" >{{ form.thumbnailImage.help_text }}</li>
+			</ul>
+          {%endif%}
+		  
+        </td>
+      </tr>	
+
+ <tr>
+        <th><label for="{{ form.coverImage.id_for_label }}">CoverImage</label></th>
+        <td>
+		{% if form.coverImage.errors %}
+        <ul class="c">    
+         <li>{{ form.coverImage.errors }}</li>            
+            </ul>
+			{% endif %} 
+            {{ form.coverImage}}       
+          {% if form.coverImage.help_text %}
+		          <ul class="d">    
+            <li class="d" >{{ form.coverImage.help_text }}</li>
+			</ul>
+          {%endif%}
+		  
+        </td>
+      </tr>	  
+	  
+<tr>
+        <th><label for="{{ form.preview.id_for_label }}">preview</label></th>
+        <td>
+		{% if form.preview.errors %}
+        <ul class="c">    
+         <li>{{ form.preview.errors }}</li>            
+            </ul>
+			{% endif %} 
+            {{ form.preview}}       
+          {% if form.preview.help_text %}
+		          <ul class="d">    
+            <li class="d" >{{ form.preview.help_text }}</li>
+			</ul>
+          {%endif%}
+		  
+        </td>
+      </tr>	  
+  </table>
+<input type="submit" value="submit">
+</form>
+
+</body>
+</html>

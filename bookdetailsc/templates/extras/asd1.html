@@ -1,0 +1,82 @@
+<html>
+<head>
+<title> 1- to 4-level Drop Down</title>
+<style type="text/css">
+.DDlist { display:none; }
+</style>
+
+<script type="text/javascript">
+// From: http://www.codingforums.com/showthread.php?t=202456
+// and: http://www.codingforums.com/showthread.php?t=169465
+// Modified for 1 to 4 (+) level drop down selections
+
+var categories = [];
+  categories["startList"] = ["File1","File2",'File3', 'All Files'];        // Level 1  (True|False is 1 level only)
+
+categories["File1"] = ["Location Code","Ar Code"];                         // Level 2
+
+categories["File2"] = ["IMEI","Location Code","CTN"];      // Level 2
+       
+
+categories['File3'] = ['IEMI','Related_Price','Commission'];    
+categories['All Files'] = ['IEMI'];                        // Level 2 only
+
+var nLists = 2; // number of lists in the set
+
+function fillSelect(currCat,currList){
+  var step = Number(currList.name.replace(/\D/g,""));
+  for (i=step; i<nLists+1; i++) {
+    document.forms[0]['field'+i].length = 1;
+    document.forms[0]['field'+i].selectedIndex = 0;
+    document.getElementById('List'+i).style.display = 'none';
+  }
+  var nCat = categories[currCat];
+  if (nCat != undefined) { 
+    document.getElementById('List'+step).style.display = 'inline';
+    for (each in nCat) 	{
+      var nOption = document.createElement('option'); 
+      var nData = document.createTextNode(nCat[each]); 
+      nOption.setAttribute('value',nCat[each]); 
+      nOption.appendChild(nData); 
+      currList.appendChild(nOption); 
+    }
+  } 
+}
+
+function getValues() { 
+  var str = '';
+  str += document.getElementById('List1').value+'\n';
+  for (var i=2; i<=nLists; i++) {
+    if (document.getElementById('List'+i).selectedIndex != 0) {
+      str += document.getElementById('List'+i).value+'\n'; }
+  }
+  alert(str); 
+}
+
+function init() { fillSelect('startList',document.forms[0]['List1']); }
+
+navigator.appName == "Microsoft Internet Explorer"
+   ? attachEvent('onload', init, false) 
+		   : addEventListener('load', init, false);	
+
+</script>
+</head>
+<body>
+
+<form id="search" action="{% url 'compare' %}" method="get">
+<select name='field1' id="List1" onchange="fillSelect(this.value,this.form['List2'])">
+<option selected>Choose File</option>
+</select> &nbsp;
+
+<select name='field2' id="List2" onchange="fillSelect(this.value,this.form['List3'])" class="DDlist">
+<option selected>Choose Header</option>
+</select> &nbsp;
+
+
+ <input type="text" class="form-control" placeholder="Enter Values Here" name="q"/>
+
+<!-- can add more levels if desired as "List5"+ -->
+	<input type="submit" value="Search" />
+</form>
+</body>
+</html>

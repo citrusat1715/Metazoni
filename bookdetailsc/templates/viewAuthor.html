@@ -1,0 +1,25 @@
+
+<head>
+<style>
+
+</style>
+</head>
+<body>
+
+<div class="product-card">
+  <div class="product-card-thumbnail">
+	  {% for objects in a %}  
+  <h2 class="product-card-title"><a href="{{objects.get_absolute_url}}">{{objects.name}}</a></h2>
+  <span class="product-card-desc">{{objects.description}}</span>			
+	  {% endfor %}
+{% endwith %}			
+			{% endif %}
+			
+			
+			
+
+</div>
+
+<div>
+
+</body>

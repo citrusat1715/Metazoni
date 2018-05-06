@@ -1,0 +1,49 @@
+
+<head>
+<style>
+
+
+
+.product-card {
+  background-color: #fefefe;
+  border: 1px solid #e6e6e6;
+  padding: 1rem;
+  display:inline-block;
+  width:300px;
+  
+  
+}
+
+.product-card-thumbnail {
+  display: block;
+  position: relative;
+}
+
+
+
+
+</style>
+</head>
+<body>
+
+<div class="product-card">
+  <div class="product-card-thumbnail">
+      {% for objects in a %}
+       
+
+  
+  <h2 class="product-card-title"><a href="{{objects.get_absolute_url}}">{{objects.name}}</a></h2>
+  <span class="product-card-desc">{{objects.contact}}</span>
+				
+					
+                      
+			
+			{% endfor %} 
+			
+			
+
+</div>
+
+<div>
+
+</body>

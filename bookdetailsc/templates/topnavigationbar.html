@@ -1,0 +1,91 @@
+{% load searchTags %}
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  
+
+<nav class="navbar navbar-inverse ">
+  <div class="container-fluid">
+    <div class="navbar-header" >
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Metazon</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li> <a href="#">Home</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="">Categories <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'addCategory' %}">Add Category</a></li>
+            <li><a href="{% url 'viewCategories' %}">Show Categories</a></li>
+            
+          </ul>
+        </li>
+		<li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Books <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'addBook' %}">Add Books</a></li>
+            <li><a href="{% url 'viewBooks' %}">Show Books</a></li>
+            
+          </ul>
+        </li>
+		<li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Authors <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'addAuthor' %}">Add Authors</a></li>
+            <li><a href="{% url 'viewAuthors' %}">Show Authors</a></li>
+            
+          </ul>
+        </li>
+		<li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Publishers <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'addPublisher' %}">Add Publishers</a></li>
+            <li><a href="{% url 'viewPublishers' %}">Show Publishers</a></li>
+            
+          </ul>
+        </li>
+<li><div class="topnav" style="margin-top:12px;">
+ 
+<form class="search" action="{% url 'searchResults' %}" method='get'>
+
+  <input type="search" placeholder="Search here..." name="q" 
+      value='{{ q }}' required>
+  <button type="submit">Search</button>
+</form>
+</div>
+      <li></ul>
+	  
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Your Account <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+		  {% if user.is_authenticated %}
+		  
+            <li><a href="{% url 'myAccount' %}">My Account</a></li>
+            <li><a href="{% url 'viewPublishers' %}">My Orders</a></li>
+			 <li><a href="{% url 'viewPublishers' %}">My Saved Items</a></li>
+			  <li><a href="{% url 'logout' %}">Logout</a></li>
+			  
+		  {% else %}
+		    <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'registerUser' %}">SignUp</a></li>
+		  
+		   {% endif %}
+		   
+            
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

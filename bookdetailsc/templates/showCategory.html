@@ -1,0 +1,329 @@
+{% include 'topnavigationbar.html' %}
+
+<head>
+  
+<style>
+
+.sidenav-categories{
+
+background-color:white;
+display:block;
+width:120px;
+height:100%;
+margin-left:-12px;
+margin-top:10px;
+
+
+
+border-right:1px solid silver
+
+}
+.sidenav-categories a {
+text-align: left;
+    padding:10px;
+    text-decoration: none;
+    font-size: 15px;
+    font-style:calibri;
+    color: black;
+    display: block;
+}
+.sidenav-categories a:hover {
+     background-color: blue;
+    color: white;
+}
+.center-top{
+display:block;
+margin-top:10px;
+margin-left:30px;
+margin-right:15px;
+
+display:block;
+
+}
+.center-1{
+display:block;
+margin-top:10px;
+margin-left:30px;
+
+
+}
+#center-top{
+
+border-bottom:1px solid silver;
+
+
+
+}
+.categories{
+font-size:15px;
+color:silver;
+padding:5px;
+}
+
+.center-categoriy-container{
+
+}
+.cat-container1{
+display:block;
+width:150px;
+height:150px;
+margin-left:70px;
+text-align:center;
+
+
+
+}
+.cat-container{
+display:block;
+width:150px;
+height:150px;
+margin-left:;
+text-align:center;
+
+
+
+}
+.img-cat{
+margin:5px;
+
+
+}
+#cat-container{
+
+margin-left:50px;
+display:block;
+margin-top:20px;
+
+}
+.thumbnail
+{
+    margin-bottom: 20px;
+    padding: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+	width:150px;
+	height:200px;
+    font-size:5px;
+
+}
+.thumbnail-books
+{
+    margin-bottom: 20px;
+    padding: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+	width:270px;
+	height:350px;
+	border: 1px solid silver;
+	background-color:silver;
+	margin-left:-15px;
+    
+	
+}
+.captions{
+
+margin-left:30px;}
+
+</style>
+</head>
+{% if object_list or objects %}
+<span style="margin-left:150px; font-size:20px;">Shop By Category</span>
+{% else %}
+<span style="margin-left:150px; font-size:20px;">Books</span>
+{% endif %}
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-1">
+<div class="sidenav-categories">
+<span class="categories">Categories</span>
+  <a href="#">Anthropology</a>  
+  <a href="#">Sciences</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
+   <a href="#">About</a>  
+  <a href="#">Services</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
+   <a href="#">About</a>  
+  <a href="#">Services</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
+</div>
+
+</div>
+
+
+<div class="col-sm-11">
+{% if objects %}
+
+<div id="center-top" class="center-top">
+
+<div class="container">
+
+<div class="row">
+{% for category in objects %}	
+<div class="col-sm-2">
+<div class="cat-container">
+
+<a href="{{category.get_absolute_url}}">
+    <img class="group list-group-image" style="align-content:center; width:100px; height:100px;"src="{{category.thumbnailImage.url}}" alt="" />
+      <div class="caption">
+                    <h4 class="group inner list-group-item-heading" style="font-size:15px; align-content-center; padding-top:10px;">
+                        {{category.name}}</h4></a>
+
+</div>
+</div>
+</div>
+{% endfor %}
+</div>
+</div>
+</div>
+<span style="margin-left:40px; font-size:20px;">Books</span>
+
+<div id="cat-container">
+{% for group in books %}
+ <div class="row">
+ {% for book in group %}
+            <div class="item  col-xs-3 col-lg-3">
+            <div class="thumbnail-books">
+			<a href="{{book.get_absolute_url}}">
+                <img class="group list-group-image" style="align-content:left;"src="{{book.thumbnailImage.url}}" alt="" />
+				<div class="captions">
+                
+                    <h4 style="align-content:center;">
+                        {{book.name}}</h4>
+                    <p class="group inner list-group-item-text">
+                        <span class="rating-input"><span data-value="0" class="glyphicon glyphicon-star"></span><span data-value="1" class="glyphicon glyphicon-star"></span><span data-value="2" class="glyphicon glyphicon-star"></span><span data-value="3" class="glyphicon glyphicon-star"></span><span data-value="4" class="glyphicon glyphicon-star-empty"></span><span data-value="5" class="glyphicon glyphicon-star-empty"></span><a href=""> # </a></span>
+                        <h5 style="margin-top:-02px;">Condition Format</h5>
+				 
+                    
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <p class="lead">
+                                $21.000</p>
+								<a>
+                        
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		{% endfor %}
+
+
+
+
+
+</div>
+{% endfor %}
+
+{% endif %}
+{% if object_list %}
+<div id="center-top" class="center-top">
+<div class="container">
+{% for group in object_list %}
+<div class="row">
+{% for category in group %}	
+<div class="col-sm-2">
+<div class="cat-container">
+
+<a href="{{category.get_absolute_url}}">
+    <img class="group list-group-image" style="align-content:center; width:100px; height:100px;"src="{{category.thumbnailImage.url}}" alt="" />
+      <div class="caption">
+                    <h4 class="group inner list-group-item-heading" style="font-size:15px; align-content-center; padding-top:10px;">
+                        {{category.name}}</h4></a>
+
+</div>
+</div>
+</div>
+{% endfor %}
+</div>
+{% endfor %}
+</div>
+</div>
+<span style="margin-left:40px; font-size:20px;">Books</span>
+
+<div id="cat-container">
+{% for group in books %}
+ <div class="row">
+ {% for book in group %}
+            <div class="item  col-xs-3 col-lg-3">
+            <div class="thumbnail-books">
+			<a href="{{book.get_absolute_url}}">
+                <img class="group list-group-image" style="align-content:left;"src="{{book.thumbnailImage.url}}" alt="" />
+				<div class="captions">
+                
+                    <h4 style="align-content:center;">
+                        {{book.name}}</h4>
+                    <p class="group inner list-group-item-text">
+                        <span class="rating-input"><span data-value="0" class="glyphicon glyphicon-star"></span><span data-value="1" class="glyphicon glyphicon-star"></span><span data-value="2" class="glyphicon glyphicon-star"></span><span data-value="3" class="glyphicon glyphicon-star"></span><span data-value="4" class="glyphicon glyphicon-star-empty"></span><span data-value="5" class="glyphicon glyphicon-star-empty"></span><a href=""> # </a></span>
+                        <h5 style="margin-top:-02px;">Condition Format</h5>
+				 
+                    
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <p class="lead">
+                                $21.000</p>
+								<a>
+                        
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		{% endfor %}
+
+
+
+
+
+</div>
+{% endfor %}
+
+{% endif %}
+{% if objecto %}
+
+
+<div id="cat-container">
+{% for group in books %}
+ <div class="row">
+ {% for book in group %}
+            <div class="item  col-xs-3 col-lg-3">
+            <div class="thumbnail-books">
+			<a href="{{book.get_absolute_url}}">
+                <img class="group list-group-image" style="align-content:left;"src="{{book.thumbnailImage.url}}" alt="" />
+				<div class="captions">
+                
+                    <h4 style="align-content:center;">
+                        {{book.name}}</h4>
+                    <p class="group inner list-group-item-text">
+                        <span class="rating-input"><span data-value="0" class="glyphicon glyphicon-star"></span><span data-value="1" class="glyphicon glyphicon-star"></span><span data-value="2" class="glyphicon glyphicon-star"></span><span data-value="3" class="glyphicon glyphicon-star"></span><span data-value="4" class="glyphicon glyphicon-star-empty"></span><span data-value="5" class="glyphicon glyphicon-star-empty"></span><a href=""> # </a></span>
+                        <h5 style="margin-top:-02px;">Condition Format</h5>
+				 
+                    
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <p class="lead">
+                                $21.000</p>
+								<a>
+                        
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		{% endfor %}
+
+
+
+
+
+</div>
+{% endfor %}
+
+{% endif %}
+  </div>
+</div>
+

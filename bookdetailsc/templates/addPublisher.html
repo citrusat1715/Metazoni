@@ -1,0 +1,95 @@
+{% include 'topnavigationbar.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+</style>
+</head>
+<body>
+
+
+<h1>Welcome {{ request.user.username }}</h1>
+<form  method="POST" enctype="multipart/form-data" >{% csrf_token %}
+<table border="1" style="margin-left:5px;">
+      <tr>
+        <th><label for="{{ form.name.id_for_label }}">Name:</label></th>
+        <td>
+		{% if form.name.errors %}
+        <ul class="c">    
+         <li>{{ form.name.errors }}</li>            
+            </ul>
+			{% endif %} 
+            {{ form.name }}       
+          {% if form.name.help_text %}
+		          <ul class="d">    
+            <li class="d" >{{ form.name.help_text }}</li>
+			</ul>
+          {%endif%}
+		  
+        </td>
+      </tr>
+	  <tr>
+        <th><label for="{{ form.address.id_for_label }}">Address</label></th>
+        <td>
+		{% if form.address.errors %}
+        <ul class="c">    
+         <li>{{ form.address.errors }}</li>            
+            </ul>
+			{% endif %} 
+            {{ form.address }}       
+          {% if form.address.help_text %}
+		          <ul class="d">    
+            <li class="d" >{{ form.address.help_text }}</li>
+			</ul>
+          {%endif%}
+		  
+        </td>
+      </tr>
+	  	  <tr>
+        <th><label for="{{ form.contact.id_for_label }}">Contact<label></th>
+        <td>
+		{% if form.contact.errors %}
+        <ul class="c">    
+         <li>{{ form.contact.errors }}</li>            
+            </ul>
+			{% endif %} 
+            {{ form.contact}}       
+          {% if form.contact.help_text %}
+		          <ul class="d">    
+            <li class="d" >{{ form.contact.help_text }}</li>
+			</ul>
+          {%endif%}
+		  
+        </td>
+      </tr>
+	  
+
+      <tr>
+        <th><label for="{{ form.otherInformation.id_for_label }}">otherInformation</label></th>
+        <td>
+		{% if form.otherInformation.errors %}
+        <ul class="c">    
+         <li>{{ form.otherInformation.errors }}</li>            
+            </ul>
+			{% endif %} 
+            {{ form.otherInformation }}       
+          {% if form.otherInformation.help_text %}
+		          <ul class="d">    
+            <li class="d" >{{ form.otherInformation.help_text }}</li>
+			</ul>
+          {%endif%}
+		  
+        </td>
+      </tr>
+	  
+	  
+	  
+	  	
+	  
+  </table>
+<input type="submit" value="submit">
+</form>
+
+</body>
+</html>
