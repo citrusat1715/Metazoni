@@ -28,7 +28,7 @@ SECRET_KEY = '8i7ce$&og20_u@^sqa6jix(f3m6op4(4d2i4*wfgwmjx@tf@y9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['metazoni.herokuapp.com',]
+ALLOWED_HOSTS = ['citrusat1715.herokuapp.com']
 
 
 # Application definition
