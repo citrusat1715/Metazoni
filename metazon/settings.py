@@ -28,7 +28,7 @@ SECRET_KEY = '8i7ce$&og20_u@^sqa6jix(f3m6op4(4d2i4*wfgwmjx@tf@y9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['citrusat1715.herokuapp.com']
+ALLOWED_HOSTS = ['metazoni.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -87,12 +87,8 @@ WSGI_APPLICATION = 'metazon.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'djangogirlss',
-         'USER': 'postgres',
-        'PASSWORD': 'pokeword@',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -143,6 +139,8 @@ DEFAULT_FROM_EMAIL = 'TestSite Team <noreply@example.com>'
 AUTH_USER_MODEL = 'accounts.User'
 LOGIN_REDIRECT_URL = 'addCategory'
 LOGOUT_REDIRECT_URL = 'addCategory'
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 STATIC_PATH = os.path.join(PROJECT_PATH,'static')
 STATIC_URL = '/static/' # You may find this is already defined as such.
 STATICFILES_DIRS = (

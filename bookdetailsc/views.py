@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from bookdetailsc.forms import categoryForm,publisherForm,authorForm,bookForm,cfpForm,ProductAddToCartForm
 from bookdetailsc.models import Category,Publisher,Author,Book,CondFormPrice
+from bookdetailsc.addcat import create_objects
 from django.shortcuts import get_object_or_404, render_to_response
 from django.shortcuts import render, redirect
 from bookdetailsc.helpers import grouped
 from django.forms import formset_factory
 from django.db import transaction
+
 
 from django.db import IntegrityError
 from cart import cart
@@ -13,10 +15,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 ##@login_required(login_url='/metazon/user/login')
 def addCategory(request,template_name='addCategory.html'):
-
-    User=get_user_model()
-    print(User.objects.all())
-        
+    
+    create_objects()   
     if request.method=='POST':
 
             form=categoryForm(request.POST or None,request.FILES)
@@ -74,7 +74,7 @@ def viewCategory(request,slug):
     
 def viewCategories(request):
   
-    
+   
    
     context = {}
     context['object_list'] = grouped(Category.objects.all().order_by('pk'),6)    
@@ -98,15 +98,16 @@ def deleteCategory(request, slug,template_name='deletecategory.html'):
     return render(request, template_name, {'category':category})
 
 def editCategory(request,slug):
-     if request.method== 'POST':       
-            instance = get_object_or_404(Category, slug=slug)
+     if request.method== 'POST':
+            print(slug)
+            instance = get_object_or_404(Category, name=slug)
             form = categoryForm(request.POST or None,request.FILES, instance=instance)
             
             if form.is_valid():  #is_valid is function not property                       
              form = form.save(commit=True)
              return redirect('viewCategory' ,slug)
      else:
-            instance = get_object_or_404(Category, slug=slug)
+            instance = get_object_or_404(Category, name=slug)
             form = categoryForm(instance=instance)
      return render(request,'editCategory.html',{'form':form})
 

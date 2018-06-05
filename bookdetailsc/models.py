@@ -14,16 +14,15 @@ class ActiveCategoryManager(models.Manager):
 
 class Category(MPTTModel):
     name=models.CharField(max_length=50,blank=False,unique=True)
-    slug=models.SlugField(max_length=50, unique=True, help_text='Unqiue value for product page URL, created from name.')
-    parent = TreeForeignKey('self', null=True, blank=True, related_name='children', db_index=True)
+    slug=models.SlugField(max_length=50, unique=False, help_text='Unqiue value for product page URL, created from name.',blank=True,null=True)
+    parent = TreeForeignKey('self',null=True, blank=True, related_name='children', db_index=True)
     description=models.TextField()
     isActive=models.BooleanField(default=True)
     metaKeywords=models.CharField("Meta Keywords", max_length=255, help_text='Comma-delimited set of SEO keywords for meta tag')
-    metaDescription=models.CharField("Meta Description ", max_length=255, help_text='Content for desciption meta tag')
-    createdAt=models.DateTimeField(auto_now_add=True)
-    updatedAt=models.DateTimeField(auto_now=True)
-    thumbnailImage=models.FileField(upload_to='static/bookdetailsc/soimages/category/thumbnails',blank=False)
-
+    metaDescription=models.CharField("Meta Description ", max_length=255, help_text='Content for desciption meta tag',blank=True,null=True)
+    createdAt=models.DateTimeField(auto_now_add=True,blank=True,null=True)
+    updatedAt=models.DateTimeField(auto_now=True,blank=True,null=True)
+    thumbnailImage=models.FileField(upload_to='static/bookdetailsc/soimages/category/thumbnails',blank=True,null=True)
     objects=models.Manager()
     active=ActiveCategoryManager()
 
@@ -32,8 +31,7 @@ class Category(MPTTModel):
     
 
     class Meta:
-        db_table='categories'
-        
+        db_table='categories'        
         verbose_name_plural='Categories'
         ordering=['pk']
     def __unicode__(self):
