@@ -1,4 +1,4 @@
-Babel==2.5.1
+Babel==2.9.1
 beautifulsoup4==4.6.0
 bleach==2.1.1
 Cartridge==0.12.0
