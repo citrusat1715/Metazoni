@@ -4,7 +4,7 @@ bleach==2.1.1
 Cartridge==0.12.0
 certifi==2017.7.27.1
 chardet==3.0.4
-codecov==2.0.15
+codecov==2.0.16
 coverage==4.5.1
 dj-database-url==0.5.0
 Django==1.10.8
